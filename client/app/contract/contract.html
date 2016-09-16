@@ -1,0 +1,122 @@
+
+<div ng-include="'components/header/header.html'"></div>
+<div ng-include="'components/aside/aside.html'"></div>
+
+<!-- main start -->
+<section id="main" class="merge-left" ng-class="{'merge-left' : !$root.toggleAside}">
+  <section class="container-fluid" ng-class="{'container-fluid' : !$root.toggleAside, 'container' : $root.toggleAside}">
+
+    <!-- contract start -->
+    <h2 ng-hide="$root.building | isEmpty">{{ $root.building.name }}</h2>
+    <h2 ng-show="$root.building | isEmpty">Todas los Inmuebles</h2>
+    <div class="row">
+      <div class="col-md-10">
+        <h4>Listado de Contratos</h4>
+      </div>
+      <div class="col-md-2">
+        <a ng-hide="$root.building | isEmpty" class="btn btn-info btn-lg text-uppercase" href="#" ng-click="create()" id="create">Nuevo Contrato</a>
+        <a ng-show="$root.building | isEmpty" class="btn btn-info btn-lg text-uppercase disabled" href="#" ng-click="create()" id="create">Nuevo Contrato</a>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-offset-7 col-md-5">
+       <form>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchFilter">
+          </div>      
+        </div>
+      </form>
+      </div>
+    </div>
+    <div class="table-responsive margin-bottom">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'building.name'; sortReverse = !sortReverse">Inmueble
+                <span ng-show="sortType == 'building.name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'building.name' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'customer.name'; sortReverse = !sortReverse">Cliente
+                <span ng-show="sortType == 'customer.name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'customer.name' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'startDate'; sortReverse = !sortReverse">Inicio del Contrato
+                <span ng-show="sortType == 'startDate' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'startDate' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'endDate'; sortReverse = !sortReverse">Fin del Contrato
+                <span ng-show="sortType == 'endDate' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'endDate' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th class="text-right">
+              <a href="#" class="table-sort" ng-click="sortType = 'monthlyRent'; sortReverse = !sortReverse">Renta Mensual
+                <span ng-show="sortType == 'monthlyRent' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'monthlyRent' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th class="text-right">
+              <a href="#" class="table-sort" ng-click="sortType = 'maintenanceFee'; sortReverse = !sortReverse">Mantenimiento
+                <span ng-show="sortType == 'maintenanceFee' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'maintenanceFee' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>Moneda</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="contract in contracts | orderBy:sortType:sortReverse | filter:searchFilter">
+            <td>{{ contract.building.name }}</td>
+            <td><strong>{{ contract.customer.name | limitTo:45 }}</strong></td>
+            <td>{{ contract.startDate | date:'dd MMM yyyy' }}</td>
+            <td>{{ contract.endDate | date:'dd MMM yyyy' }}</td>
+            <td class="text-right">{{ contract.monthlyRent | money }}</td>
+            <td class="text-right">{{ contract.maintenanceFee | money }}</td>
+            <td>{{ contract.customer.currency | uppercase }}</td>
+            <td class="text-right btn-content">
+              <a class="btn btn-info btn-circle text-uppercase" href="#" ng-click="view(contract._id)" id="view"><span class="fa fa-eye"></span> Ver</a>
+              <a class="btn btn-primary btn-circle text-uppercase" href="#" ng-click="edit(contract._id)" id="edit"><span class="fa fa-pencil-square-o"></span> Editar</a>
+            </td>
+          </tr>
+          <tr ng-show="!contracts.length">
+            <td colspan="7" class="text-center">No Existe Contratos</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th class="text-right" colspan="4">Total :</th>
+            <td class="text-right">{{ sumTotals.pesos[0] | money }}</td>
+            <td class="text-right">{{ sumTotals.pesos[1] | money }}</td>
+            <td colspan="2">PESOS</td>
+          </tr>
+          <tr>
+            <th colspan="4"></th>
+            <td class="text-right">{{ sumTotals.dlls[0] | money }}</td>
+            <td class="text-right">{{ sumTotals.dlls[1] | money }}</td>
+            <td colspan="2">DOLARES</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!--<div class="margin-bottom">
+      <a class="btn btn-info btn-lg text-uppercase" href="#" ng-click="create()" id="create">Nuevo Contrato</a>
+    </div>-->
+    <!-- contract end -->
+
+  </section>
+</section>
+<!-- main end -->
+
+<div ng-include="'components/footer/footer.html'"></div>

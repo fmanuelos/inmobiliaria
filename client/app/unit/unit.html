@@ -1,0 +1,102 @@
+
+<div ng-include="'components/header/header.html'"></div>
+<div ng-include="'components/aside/aside.html'"></div>
+
+<!-- main start -->
+<section id="main" class="merge-left" ng-class="{'merge-left' : !$root.toggleAside}">
+  <section class="container-fluid" ng-class="{'container-fluid' : !$root.toggleAside, 'container' : $root.toggleAside}">
+
+    <!-- unit start -->
+    <h2 ng-hide="$root.building | isEmpty">{{ $root.building.name }}</h2>
+    <h2 ng-show="$root.building | isEmpty">Todas los Inmuebles</h2>    
+    <div class="row">
+      <div class="col-md-10">
+        <h4>Catalogo de Unidades</h4>
+      </div>
+      <div class="col-md-2">
+        <a ng-hide="$root.building | isEmpty" class="btn btn-info btn-lg text-uppercase" href="#" ng-click="create()" id="create">Nueva Unidad</a>
+        <a ng-show="$root.building | isEmpty" class="btn btn-info btn-lg text-uppercase disabled" href="#" ng-click="create()" id="create">Nueva Unidad</a>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-offset-7 col-md-5">
+       <form>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchFilter.local">
+          </div>      
+        </div>
+      </form>
+      </div>
+    </div>
+    <div class="table-responsive margin-bottom">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'building.name'; sortReverse = !sortReverse">Inmueble
+                <span ng-show="sortType == 'building.name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'building.name' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'local'; sortReverse = !sortReverse">Unidad
+                <span ng-show="sortType == 'local' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'local' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'surface'; sortReverse = !sortReverse">Superficie
+                <span ng-show="sortType == 'surface' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'surface' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'type'; sortReverse = !sortReverse">Tipo
+                <span ng-show="sortType == 'type' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'type' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>Descripción</th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'ocupated'; sortReverse = !sortReverse">Disponibilidad
+                <span ng-show="sortType == 'ocupated' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'ocupated' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="unit in units | orderBy:sortType:sortReverse | filter:searchFilter">
+            <td>{{ unit.building.name }}</td>
+            <td class="text-center"><h4><strong>{{ unit.local }}</strong></h4></td>
+            <td>{{ unit.surface }} m<sup>2</sup></td>
+            <td>{{ unit.type }}</td>
+            <td>{{ unit.description | limitTo:55 }}</td>
+            <td>
+              <h4>
+                <span ng-if="unit.ocupated" class="label label-danger">Ocupado</span>
+                <span ng-if="!unit.ocupated" class="label label-success">Disponible</span>
+              <h4>
+            </td>
+            <td class="text-right btn-content">
+              <a class="btn btn-info text-uppercase" ng-class=" unit.contracts[0] === undefined ? 'disabled' : ''" href="#" ng-click="viewCont(unit.contracts[0])"id="contract"><i class="fa fa-list"></i> Contrato</a>
+              <a class="btn btn-primary text-uppercase" href="#" ng-click="edit(unit._id)" id="edit"><i class="fa fa-pencil-square-o"></i> Editar</a>
+            </td>
+          </tr>
+          <tr ng-show="!units.length">
+            <td colspan="7" class="text-center">No Existe Unidades</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- unit end -->
+
+  </section>
+</section>
+<!-- main end -->
+
+<div ng-include="'components/footer/footer.html'"></div>

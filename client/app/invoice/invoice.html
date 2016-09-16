@@ -1,0 +1,99 @@
+<div ng-include="'components/header/header.html'"></div>
+<div ng-include="'components/aside/aside.html'"></div>
+
+<!-- main start -->
+<section id="main" class="merge-left" ng-class="{'merge-left' : !$root.toggleAside}">
+  <section class="container-fluid" ng-class="{'container-fluid' : !$root.toggleAside, 'container' : $root.toggleAside}">
+
+    <!-- invoice start -->
+    <h2>Facturas</h2>
+    <h4>Listado de Facturas</h4>
+    <hr>
+    <form id="form-filter" class="form-filter" name="form" novalidate>
+      <div class="row">
+        <div class="form-group col-md-1">
+          <label for="serie">Serie</label>
+          <input type="text" class="form-control" id="serie" ng-model="invoice_filter.serie" placeholder="S"/>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="folio">Folio</label>
+          <input type="text" class="form-control" id="folio" ng-model="invoice_filter.folio" placeholder="Folio"/>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="start_date">Fecha de Inicio</label>
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            <input type="text" class="form-control" id="start_date" uib-datepicker-popup ng-model="invoice_filter.start_date" placeholder="yyyy-mm-dd" is-open="start_open" ng-click="start_open=true"  show-button-bar="false" show-weeks="false" style="width: 300px;">
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="end_date">Fecha de Término</label>
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            <input type="text" class="form-control" id="end_date" uib-datepicker-popup ng-model="invoice_filter.end_date" placeholder="yyyy-mm-dd" is-open="end_open" ng-click="end_open=true" show-button-bar="false" show-weeks="false" style="width: 300px;">
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <div class="row">
+            <label class="col-sm-1" for="name">Cliente</label>
+            <div class="col-sm-6">
+              <ui-select ng-model="invoice_filter.customer" ng-disabled="disabled" style="width: 450px;">
+              <ui-select-match placeholder="Select or search a cliente in the list...">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="customer in customers | filter: $select.search">
+              <span ng-bind-html="customer.name + ' ' + customer.business_name | highlight: $select.search"></span>
+              </ui-select-choices>
+              </ui-select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <div class="">
+            <input type="submit" value="Crear Reporte" ng-submit="filter(invoice_filter)" class="btn btn-primary">
+          </div>
+        </div>
+      </div>
+    </form>
+    <hr>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Folio</th>
+          <th>Cliente</th>
+          <th class="text-right">Monto</th>
+          <th class="text-right">Impuesto</th>
+          <th class="text-right">Total</th>
+          <th>Moneda</th>
+          <th>Sellada</th>
+          <th>Cancelada</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="invoice in invoices">
+          <td><strong>{{ invoice._id }}</strong></td>
+          <td>{{ invoice.customer }}</td>
+          <td class="text-right">{{ invoice.amount | currency }}</td>
+          <td class="text-right">{{ invoice.tax | currency }}</td>
+          <td class="text-right">{{ invoice.total | currency }}</td>
+          <td>{{ invoice.currency }}</td>
+          <td></td>
+          <td></td>
+          <td class="text-right">
+            <a href="#" class="btn btn-warning"><i class="fa fa-file-excel-o"></i></a>
+            <a href="#" target="_blank" class=" btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+            <a href="#" class="btn btn-info"><i class="fa fa-file-code-o"></i></a>
+            <a href="#" class="btn btn-primary"><i class="fa fa-envelope-o"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+<!--     <div class="margin-bottom">
+      <a class="btn btn-info btn-lg text-uppercase" href="#" ng-click="create()" id="new">Nueva Factura</a>
+      <a class="btn btn-success btn-lg text-uppercase" href="#" ng-click="new()" id="new" style="margin-left: 15px;">Nota de Credito</a>
+      <a class="btn btn-warning btn-lg text-uppercase" href="#" ng-click="consecutive()" id="consecutive" style="margin-left: 15px;">Crear Consecutivo</a>
+    </div> -->
+    <!-- invoice end -->
+  </section>
+</section>
+<!-- main end -->
+<div ng-include="'components/footer/footer.html'"></div>

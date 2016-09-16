@@ -1,0 +1,55 @@
+
+<div ng-include="'components/header/header.html'"></div>
+<div ng-include="'components/aside/aside.html'"></div>
+
+<!-- main start -->
+<section id="main" class="merge-left" ng-class="{'merge-left' : !$root.toggleAside}">
+  <section class="container-fluid" ng-class="{'container-fluid' : !$root.toggleAside, 'container' : $root.toggleAside}">
+
+    <!-- user start -->
+    <h2>Users</h2>
+    <dl class="dl-horizontal margin-bottom">
+      <dt>Username:</dt>
+      <dd>{{ mainUser.name }}</dd>
+      <dt>Email:</dt>
+      <dd>{{ mainUser.email }}</dd>
+      <dt>Nombre:</dt>
+      <dd>{{ mainUser.firstname }}</dd>
+      <dt>Apellido:</dt>
+      <dd>{{ mainUser.lastname }}</dd>
+      <dt>Role:</dt>
+      <dd>{{ mainUser.role }}</dd>
+    </dl>
+    
+    <div class="table-responsive margin-bottom">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.role }}</td>
+          </tr>
+          <tr ng-show="!users.length">
+            <td colspan="7" class="text-center">No Existe Usuarios</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- user end -->
+
+  </section>
+</section>
+<!-- main end -->
+
+<div ng-include="'components/footer/footer.html'"></div>

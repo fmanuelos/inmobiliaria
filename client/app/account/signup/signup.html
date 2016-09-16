@@ -1,0 +1,73 @@
+<div class="container">
+
+  <form class="form-login" name="form" ng-submit="register(form)" novalidate>
+
+    <h2 class="form-login-heading">registration now</h2>
+    <div class="login-wrap">
+        <p> Enter your account details below</p>
+
+        <input type="text" name="name" class="form-control" ng-model="user.name" placeholder="User Name" autofocus required/>
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+          <p class="help-block" ng-show="form.name.$error.required && submitted">
+            A name is required
+          </p>
+        </div>
+
+        <input type="email" name="email" class="form-control" placeholder="Email" ng-model="user.email" required mongoose-error/>
+        <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
+                                            'has-error': form.email.$invalid && submitted }">
+          <p class="help-block" ng-show="form.email.$error.email && submitted">
+            Doesn't look like a valid email.
+          </p>
+          <p class="help-block" ng-show="form.email.$error.required && submitted">
+            What's your email address?
+          </p>
+          <p class="help-block" ng-show="form.email.$error.mongoose">
+            {{ errors.email }}
+          </p>
+        </div>
+
+        <input type="password" name="password" class="form-control" placeholder="Password" ng-model="user.password" ng-minlength="8" required mongoose-error/>
+        <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
+                                            'has-error': form.password.$invalid && submitted }">
+          <p class="help-block" ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+            Password must be at least 8 characters.
+          </p>
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+            {{ errors.password }}
+          </p>
+        </div>
+
+        <input type="password" name="confirmpassword" class="form-control" placeholder="Re-type Password" ng-model="user.confirmpassword" ng-minlength="8" required/>
+        <div class="form-group" ng-class="{ 'has-success': form.confirmpassword.$valid && submitted,
+                                            'has-error': form.confirmpassword.$invalid && submitted }">
+          <p class="help-block" ng-show="(user.password != user.confirmpassword || form.confirmpassword.$error.required) && submitted">
+            Must match the previous entry
+          </p>
+        </div>
+
+        <label class="checkbox">
+            <input type="checkbox" name="agree" ng-model="user.agree" value="agree this condition"> I agree to the Terms of Service and Privacy Policy
+        </label>
+        <div class="form-group" ng-class="{ 'has-error': form.agree.$viewValue == false && submitted }">
+          <p class="help-block" ng-show="form.agree.$viewValue == false && submitted">
+            You must agree with Terms of Service and Privacy Policy
+          </p>
+        </div>
+
+        <button class="btn btn-lg btn-info btn-block" type="submit">Submit</button>
+        <hr>
+
+        <div class="registration">
+            Already Registered.
+            <a class="" href="/login">
+                Login
+            </a>
+        </div>
+
+    </div>
+
+  </form>
+
+</div>

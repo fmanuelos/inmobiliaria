@@ -1,0 +1,22 @@
+/* company css */
+
+.form-company {
+  max-width: 500px;
+  margin: 100px auto 0;
+  background: #fff;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+.form-company h2.form-company-heading {
+  margin: 0;
+  padding: 25px 20px;
+  text-align: center;
+  background: #fcd45c;
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 300;
+}

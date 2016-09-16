@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h4>Contrato | {{ contract.building.name }}</h4>
+</div>
+<div class="modal-body">
+  <dl class="dl-horizontal margin-bottom">
+    <dt>Inicio del Contrato:</dt>
+    <dd>{{ contract.startDate | date:'dd MMM yyyy' }}</dd>
+    <dt>Fin del Contrato:</dt>
+    <dd>{{ contract.endDate | date:'dd MMM yyyy' }}</dd>
+    <dt>Renta Mensual:</dt>
+    <dd>{{ contract.monthlyRent | money }}</dd>
+    <dt>Deposito:</dt>
+    <dd>{{ contract.deposit | money }}</dd>
+    <dt>Cuota de Mantenimiento:</dt>
+    <dd>{{ contract.maintenanceFee | money }}</dd>
+    <!-- <dt>Moneda:</dt>
+    <dd>{{ contract.currency | uppercase }}</dd> -->
+    <dt>Metodo de Pago:</dt>
+    <dd>{{ contract.paymentMethod }}</dd>
+    <dt>IVA:</dt>
+    <dd>{{ contract.taxRate }} %</dd>
+    <dt>Días de Margen:</dt>
+    <dd>{{ contract.marginsDay }}</dd>
+    <dt>Impuesto Moratorio:</dt>
+    <dd>{{ contract.taxOverdue | money }}</dd>
+  </dl>
+  <label>Unidad</label>
+  <hr style="margin-top: 0;">
+  <dl class="dl-horizontal">
+    <dt>Local:</dt>
+    <dd>{{ contract.unit.local }}</dd>
+    <dt>Tipo:</dt>
+    <dd>{{ contract.unit.type }}</dd>
+  </dl>
+  <label>Cliente</label>
+  <hr style="margin-top: 0;">
+  <dl class="dl-horizontal">
+    <dt>Razon Social:</dt>
+    <dd>{{ contract.customer.name }}</dd>
+    <dt>RFC:</dt>
+    <dd>{{ contract.customer.rfc }}</dd>
+  </dl>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

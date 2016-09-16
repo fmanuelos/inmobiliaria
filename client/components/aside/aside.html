@@ -1,0 +1,47 @@
+<!-- aside start -->
+<aside id="side-nav" ng-controller="AsideCtrl">
+    <ul class="side-nav" ng-show="isLoggedIn()" ng-class="{'hide-left-bar' : $root.toggleAside}">
+      <li ng-class="{ active: isActive('/units')}">
+        <a href="/units"><i class="fa fa-fw  fa-cubes"></i> Unidades</a>
+      </li>
+      <li ng-class="{ active: isActive('/customers')}">
+        <a href="/customers"><i class="fa fa-fw fa-users"></i> Clientes</a>
+      </li>
+      <li ng-class="{ active: isActive('/contracts')}">
+        <a href="/contracts"><i class="fa fa-fw fa-list"></i> Contratos</a>
+      </li>
+      <li>
+        <a href="#" class="collapsed" ng-click="invoices = !invoices"><i class="fa fa-fw fa-file-text-o"></i> Facturas <i class="fa fa-fw fa-caret-down"></i></a>
+        <ul id="invoices" class="collapse" uib-collapse="invoices">
+          <li>
+            <a href="/invoices"><i class="fa fa-fw fa-angle-right"></i> Reporte de Facturas</a>
+          </li>
+          <li>
+            <a href="/new-invoice"><i class="fa fa-fw fa-angle-right"></i> Nueva Factura</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-fw fa-file-text-o"></i> Pagos</a>
+      </li>
+      <li>
+        <a href="/users"><i class="fa fa-fw fa-user"></i> Usuarios</a>
+      </li>
+      <li ng-class="{ active: isActive('/exchange-rates')}">
+        <a href="/exchange-rates"><i class="fa fa-fw fa-money"></i> Tipos de Cambio</a>
+      </li>
+      <li>
+        <a href="#" class="collapsed" ng-click="employee = !employee"><i class="fa fa-fw fa-user"></i> Empleados <i class="fa fa-fw fa-caret-down"></i></a>
+        <ul id="employee" class="collapse" uib-collapse="employee">
+          <li>
+            <a href="#"><i class="fa fa-fw fa-angle-right"></i> Administracion</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-fw fa-angle-right"></i> Hora Trabajadas</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+</aside>
+<!-- aside end -->
+

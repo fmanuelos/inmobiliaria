@@ -1,0 +1,4 @@
+/* table */
+.table > tbody > tr.text-big {
+  font-size: 20px;
+}

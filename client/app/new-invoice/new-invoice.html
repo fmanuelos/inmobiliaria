@@ -1,0 +1,81 @@
+
+<div ng-include="'components/header/header.html'"></div>
+<div ng-include="'components/aside/aside.html'"></div>
+
+<!-- main start -->
+<section id="main" class="merge-left" ng-class="{'merge-left' : !$root.toggleAside}">
+  <section class="container-fluid" ng-class="{'container-fluid' : !$root.toggleAside, 'container' : $root.toggleAside}">
+
+    <!-- new-invoice start -->
+    <h2 ng-hide="$root.building | isEmpty">{{ $root.building.name }}</h2>
+    <h2 ng-show="$root.building | isEmpty">Todas los Inmuebles</h2>
+    <div class="row">
+      <div class="col-md-7">
+        <h4>Listado de Clientes</h4>
+      </div>
+      <div class="col-md-5 text-right">
+        <a class="btn btn-success btn-lg text-uppercase" href="#" ng-click="consecutive()" id="new">Crear Consecutivo</a>
+        <a class="btn btn-info btn-lg text-uppercase" href="#" ng-click="create()" id="create">Nueva Facturas</a>
+      </div>
+    </div>
+    <hr>
+    <div class="table-responsive margin-bottom">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              <form id="form-checkbox" class="form-checkbox" name="form" novalidate>
+                <input type="checkbox" ng-model="checkboxModel" ng-click="selectAll($event)">
+              </form>
+            </th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'building.name'; sortReverse = !sortReverse">Inmueble
+                <span ng-show="sortType == 'building.name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'building.name' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'customer.name'; sortReverse = !sortReverse">Cliente
+                <span ng-show="sortType == 'customer.name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'customer.name' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th class="text-right">
+              <a href="#" class="table-sort" ng-click="sortType = 'monthlyRent'; sortReverse = !sortReverse">Renta Mensual
+                <span ng-show="sortType == 'monthlyRent' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'monthlyRent' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th class="text-right">
+              <a href="#" class="table-sort" ng-click="sortType = 'maintenanceFee'; sortReverse = !sortReverse">Mantenimiento
+                <span ng-show="sortType == 'maintenanceFee' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'maintenanceFee' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>Moneda</th>
+            <!-- <th></th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="customer in customers track by $index | orderBy:sortType:sortReverse">
+            <td><input type="checkbox" ng-model="customer.checkbox"></td>
+            <td>{{ customer.building.name }}</td>
+            <td><strong>{{ customer.name | limitTo:45 }}</strong></td>
+            <td class="text-right">{{ customer.monthlyRent | money }}</td>
+            <td class="text-right">{{ customer.maintenanceFee | money }}</td>
+            <td>{{ customer.currency | uppercase }}</td>
+            <!-- <td class="text-right btn-content"></td> -->
+          </tr>
+          <tr ng-show="!customers.length">
+            <td colspan="6" class="text-center">No Existe Clientes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- new-invoice end -->
+
+  </section>
+</section>
+<!-- main end -->
+
+<div ng-include="'components/footer/footer.html'"></div>

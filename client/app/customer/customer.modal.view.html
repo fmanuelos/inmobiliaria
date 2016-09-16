@@ -1,0 +1,57 @@
+<div class="modal-header">
+  <h4>Cliente | {{ customer.building.name }}</h4>
+</div>
+<div class="modal-body">
+  <dl class="dl-horizontal margin-bottom">
+        <dt>Razon Social:</dt>
+        <dd>{{ customer.name }}</dd>
+        <dt>Nombre Comercial:</dt>
+        <dd>{{ customer.tradename }}</dd>
+        <dt>RFC:</dt>
+        <dd>{{ customer.rfc }}</dd>
+        <dt>Dirección:</dt>
+        <dd>{{ customer.address }}</dd>
+        <dt>Colonia:</dt>
+        <dd>{{ customer.neiborhood }}</dd>
+        <dt>Codigo Postal:</dt>
+        <dd>{{ customer.zipCode }}</dd>
+        <dt>Ciudad:</dt>
+        <dd>{{ customer.city }}</dd>
+        <dt>Estado:</dt>
+        <dd>{{ customer.state }}</dd>
+        <dt>Pais:</dt>
+        <dd>{{ customer.country }}</dd>
+        <dt>Representante Legal:</dt>
+        <dd>{{ customer.representative }}</dd>
+        <dt>Correo Electronico:</dt>
+        <dd>{{ customer.email }}</dd>
+        <dt>Moneda:</dt>
+        <dd>{{ customer.currency | uppercase }}</dd>
+    </dl>
+    <div>
+      <h4>Contactos</h4>
+      <table class="table table-condensed">
+        <thead> 
+          <tr> 
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Posición</th>
+            <th>Enviar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="contact in customer.contacts">
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.phone | tel }}</td>
+            <td>{{ contact.position }}</td>
+            <td><i ng-show="contact.isActive" class="fa fa-check"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

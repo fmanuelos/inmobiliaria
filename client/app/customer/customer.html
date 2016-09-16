@@ -1,0 +1,87 @@
+
+<div ng-include="'components/header/header.html'"></div>
+<div ng-include="'components/aside/aside.html'"></div>
+
+<!-- main start -->
+<section id="main" class="merge-left" ng-class="{'merge-left' : !$root.toggleAside}">
+  <section class="container-fluid" ng-class="{'container-fluid' : !$root.toggleAside, 'container' : $root.toggleAside}">
+
+    <!-- customer start -->
+    <h2 ng-hide="$root.building | isEmpty">{{ $root.building.name }}</h2>
+    <h2 ng-show="$root.building | isEmpty">Todas los Inmuebles</h2>
+    <div class="row">
+      <div class="col-md-10">
+        <h4>Listado de Clientes</h4>
+      </div>
+      <div class="col-md-2">
+        <a ng-hide="$root.building | isEmpty" class="btn btn-info btn-lg text-uppercase" href="#" ng-click="create()" id="create">Nuevo Cliente</a>
+        <a ng-show="$root.building | isEmpty" class="btn btn-info btn-lg text-uppercase disabled" href="#" ng-click="create()" id="create">Nuevo Cliente</a>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-offset-7 col-md-5">
+       <form>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchFilter.$">
+          </div>      
+        </div>
+      </form>
+      </div>
+    </div>
+    <div class="table-responsive margin-bottom">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'building.name'; sortReverse = !sortReverse">Inmueble
+                <span ng-show="sortType == 'building.name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'building.name' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'name'; sortReverse = !sortReverse">Razon Social
+                <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="table-sort" ng-click="sortType = 'rfc'; sortReverse = !sortReverse">RFC
+                <span ng-show="sortType == 'rfc' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'rfc' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>Contacto</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="customer in customers | orderBy:sortType:sortReverse | filter:searchFilter">
+            <td>{{ customer.building.name }}</td>
+            <td><strong>{{ customer.name | limitTo:45 }}</strong></td>
+            <td>{{ customer.rfc }}</td>
+            <td>{{ customer.contacts[0].name }}</td>
+            <td>{{ customer.contacts[0].email }}</td>
+            <td>{{ customer.contacts[0].phone | tel }}</td>
+            <td class="text-right btn-content">
+              <a class="btn btn-info btn-circle text-uppercase" href="#" ng-click="view(customer._id)" id="view"><span class="fa fa-eye"></span> Ver</a>
+              <a class="btn btn-primary btn-circle text-uppercase" href="#" ng-click="edit(customer._id)" id="edit"><span class="fa fa-pencil-square-o"></span> Editar</a>
+            </td>
+          </tr>
+          <tr ng-show="!customers.length">
+            <td colspan="7" class="text-center">No Existe Clientes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- customer end -->
+
+  </section>
+</section>
+<!-- main end -->
+
+<div ng-include="'components/footer/footer.html'"></div>

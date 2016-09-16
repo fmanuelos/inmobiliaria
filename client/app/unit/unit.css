@@ -1,0 +1,35 @@
+/* unit css */
+
+.form-unit {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.form-unit input[type="text"]{
+  max-width: 380px;
+  display: inline-block;
+  border: 1px solid #FFF;
+  height: 43px;
+  font-size: 18px;
+}
+
+.form-group-ex {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.margin-left{
+  margin-left: 15px !important;
+}
+
+.units > div {
+  padding-bottom: 15px;
+}
+
+.units > div > div.row {
+  border: solid 2px #eee;
+  border-radius: 10px;
+  margin: 0;
+  padding-bottom: 15px;
+  background-color: #F8F8FF;
+}

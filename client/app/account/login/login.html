@@ -1,0 +1,59 @@
+<div class="container">
+  <form class="form-login" name="form" ng-submit="login(form)" novalidate>
+    <h2 class="form-login-heading">sign in now</h2>
+    <div class="login-wrap">
+      <input type="email" name="email" class="form-control" placeholder="Email" autofocus ng-model="user.email" required>
+      <input type="password" name="password" class="form-control" placeholder="Password" ng-model="user.password" required>
+
+      <div class="form-group has-error">
+        <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
+          Please enter your email and password.
+        </p>
+        <p class="help-block" ng-show="form.email.$error.email && submitted">
+          Please enter a valid email.
+        </p>
+
+        <p class="help-block">{{ errors.other }}</p>
+      </div>
+
+      <label class="checkbox">
+        <span class="pull-right">
+          <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+        </span>
+      </label>
+      <button class="btn btn-info btn-lg btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+
+      <hr>
+      <div class="registration">
+        Don't have an account yet?<br>
+        <a class="" href="/signup">
+          Create an account
+        </a>
+      </div>
+    </div>
+
+
+            <!-- Modal -->
+<!--               <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">Forgot Password ?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Enter your e-mail address below to reset your password.</p>
+                            <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                            <button class="btn btn-info" type="button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- modal -->
+
+  </form>
+</div>

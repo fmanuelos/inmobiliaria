@@ -1,0 +1,132 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Inmobiliaria</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <base href="/">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- build:css(client) app/vendor.css -->
+      <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/normalize-css/normalize.css" />
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+      <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
+      <link rel="stylesheet" href="bower_components/angular-aside/dist/css/angular-aside.css" />
+      <link rel="stylesheet" href="bower_components/ui-select/dist/select.css" />
+      <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp,client}) app/app.css -->
+    <link rel="stylesheet" href="app/app.css">
+      <!-- inject:css -->
+      <link rel="stylesheet" href="app/admin/admin.css">
+      <link rel="stylesheet" href="app/company/company.css">
+      <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/invoice/invoice.css">
+      <link rel="stylesheet" href="app/user/user.css">
+      <link rel="stylesheet" href="app/exchange_rate/exchange_rate.css">
+      <link rel="stylesheet" href="app/customer/customer.css">
+      <link rel="stylesheet" href="components/header/header.css">
+      <link rel="stylesheet" href="components/modal/modal.css">
+      <link rel="stylesheet" href="components/aside/aside.css">
+      <link rel="stylesheet" href="app/unit/unit.css">
+      <link rel="stylesheet" href="components/footer/footer.css">
+      <link rel="stylesheet" href="app/account/login/login.css">
+      <!-- endinject -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="inmobiliariaApp">
+    <!--[if lt IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <!-- view start-->
+    <div ui-view=""></div>
+    <!-- view end-->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- build:js({client,node_modules}) app/vendor.js -->
+      <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-css/angular-css.js"></script>
+      <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
+      <script src="bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js"></script>
+      <script src="bower_components/angular-aside/dist/js/angular-aside.js"></script>
+      <script src="bower_components/ui-select/dist/select.js"></script>
+      <script src="bower_components/angular-ui-mask/dist/mask.js"></script>
+      <script src="bower_components/marked/lib/marked.js"></script>
+      <script src="bower_components/angular-marked/dist/angular-marked.js"></script>
+      <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,client}) app/app.js -->
+    <script src="app/app.js"></script>
+      <!-- inject:js -->
+      <script src="app/account/account.js"></script>
+      <script src="app/admin/admin.controller.js"></script>
+      <script src="app/admin/admin.js"></script>
+      <script src="app/contract/contract.controller.js"></script>
+      <script src="app/contract/contract.js"></script>
+      <script src="app/contract/contract.service.js"></script>
+      <script src="app/company/company.controller.js"></script>
+      <script src="app/company/company.js"></script>
+      <script src="app/company/company.service.js"></script>
+      <script src="app/main/main.controller.js"></script>
+      <script src="app/main/main.js"></script>
+      <script src="app/invoice/invoice.controller.js"></script>
+      <script src="app/invoice/invoice.js"></script>
+      <script src="app/invoice/invoice.service.js"></script>
+      <script src="app/new-invoice/new-invoice.controller.js"></script>
+      <script src="app/new-invoice/new-invoice.js"></script>
+      <script src="app/building/building.controller.js"></script>
+      <script src="app/building/building.service.js"></script>
+      <script src="app/user/user.controller.js"></script>
+      <script src="app/user/user.js"></script>
+      <script src="app/exchange_rate/exchange_rate.controller.js"></script>
+      <script src="app/exchange_rate/exchange_rate.js"></script>
+      <script src="app/exchange_rate/exchange_rate.service.js"></script>
+      <script src="app/customer/customer.controller.js"></script>
+      <script src="app/customer/customer.js"></script>
+      <script src="app/customer/customer.service.js"></script>
+      <script src="components/header/header.controller.js"></script>
+      <script src="components/help/help.controller.js"></script>
+      <script src="components/modal/modal.service.js"></script>
+      <script src="components/aside/aside.controller.js"></script>
+      <script src="components/auth/auth.service.js"></script>
+      <script src="components/auth/user.service.js"></script>
+      <script src="components/filters/isEmpty.filter.js"></script>
+      <script src="components/filters/money.filter.js"></script>
+      <script src="components/filters/phone.filter.js"></script>
+      <script src="app/unit/unit.controller.js"></script>
+      <script src="app/unit/unit.js"></script>
+      <script src="app/unit/unit.service.js"></script>
+      <script src="components/footer/footer.controller.js"></script>
+      <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+      <script src="components/navbar/navbar.controller.js"></script>
+      <script src="app/account/login/login.controller.js"></script>
+      <script src="app/account/signup/signup.controller.js"></script>
+      <script src="app/account/settings/settings.controller.js"></script>
+      <!-- endinject -->
+    <!-- endbuild -->
+  </body>
+</html>

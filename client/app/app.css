@@ -1,0 +1,223 @@
+
+/**
+ * Bootstrap Fonts
+ */
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot');
+    src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'),
+    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+/**
+ *Font Awesome Fonts
+ */
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?v=4.1.0');
+    src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
+    url('../bower_components/font-awesome/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'),
+    url('../bower_components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
+    url('../bower_components/font-awesome/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/**
+ * App-wide Styles
+ */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* inmobiliaria styles */
+
+body {
+  margin-top: 70px;
+}
+
+/* main */
+#main {
+  padding: 10px;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+input, select, textarea {
+  max-width: 450px;
+}
+
+.ng-isolate-scope > table:focus{
+  outline: none;
+}
+
+.ui-select-match > span {
+  border: 1px solid #ccc;
+}
+
+.merge-left {
+  margin-left: 0;
+}
+
+.margin-bottom {
+  margin-bottom: 40px;
+}
+
+@media(min-width:768px) {
+  .merge-left {
+    margin-left: 240px;
+  }
+}
+/* row vertical-align */
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+  margin-right: -4px;
+}
+
+/* buttons */
+.btn {
+  border: 0 none;
+  -webkit-transition: background-color .25s linear;
+  transition: background-color .25s linear;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+  outline: 0 none;
+}
+
+.btn-primary {
+  background: #7591ff;
+  /*background: #259af4;*/
+  color: #ffffff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background: #5b7cff;
+}
+
+.btn-success {
+  /*background: #15ca6e;*/
+  background: #4da292;
+  color: #ffffff;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-success.active,
+.open > .dropdown-toggle.btn-success {
+  background: #469384;
+}
+
+.btn-info {
+  background: #7bb8f9;
+  color: #ffffff;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-info.active,
+.open > .dropdown-toggle.btn-info {
+  background: #65abf8;
+}
+
+.btn-warning {
+  background: #ff9f5f;
+  color: #ffffff;
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active,
+.btn-warning.active,
+.open > .dropdown-toggle.btn-warning {
+  background: #ff9146;
+}
+
+.btn-danger {
+  background: #ff635f;
+  color: #ffffff;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active,
+.open > .dropdown-toggle.btn-danger {
+  background: #fb4e4d;
+}
+
+.btn-content{
+  min-width: 170px;
+}
+
+/* modal */
+.modal-header {
+  background: #fcd45c;
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+}
+
+.ng-aside .modal-dialog .modal-content .modal-header {
+  border-radius: initial;
+  -webkit-border-radius: initial;
+}
+
+
+/* table */
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.table > thead > tr > th > a.table-sort {
+  color: #333;
+}
+.table > thead > tr > th {
+  white-space: nowrap;
+}
+
+.table > tfoot > tr > th,
+.table > tfoot > tr > td { 
+  border-top: none;
+}
+
+.table-align-top > tbody > tr > td {
+  vertical-align: top !important;
+}
+
+@media (min-width: 768px) {
+  .dl-horizontal dt {
+    padding: 5px 0;
+  }
+  .dl-horizontal dd {
+    padding: 5px 0;
+  }
+}
+
+/* markdown */
+.markdown {
+  max-height: 400px;
+  overflow-x: auto;
+}
+

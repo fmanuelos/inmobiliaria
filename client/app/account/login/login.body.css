@@ -1,0 +1,12 @@
+
+/* background to login and sugnup*/
+
+body {
+  background: url("../../../assets/images/login-bg.jpg" ) no-repeat center center fixed;
+  background-color: #575858;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-top: 0;
+}

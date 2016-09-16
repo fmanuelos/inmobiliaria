@@ -1,0 +1,70 @@
+<!--header start-->
+<header ng-controller="HeaderCtrl">
+
+  <!-- nav start -->
+  <nav  ng-show="isLoggedIn()" class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+    <!-- logo start -->
+    <div class="navbar-header">
+      <a class="logo" href="/main">
+          <img alt="Brand" src="assets/images/logo.png" width="20" height="20">
+      </a>
+      <a class="navbar-brand" href="/main">{{companyName}}</a>
+    </div>
+    <!-- logo end -->
+
+    <!-- navbar-right start -->
+    <ul class="nav navbar-nav navbar-right top-nav">
+      <li>
+        <!-- navbar-toggle start -->
+        <button id="navbar-toggle" type="button" class="navbar-toggle" ng-click="toggle()"><i class="fa fa-bars"></i></button>
+        <!-- navbar-toggle end -->
+      </li>
+
+      <li>
+        <a href="#" id="simple-dropdown" class="dropdown-toggle" ng-click="help()" title="Ayuda"><i class="fa fa-question fa-lg"></i></a>
+      </li>
+
+      <li class="dropdown" uib-dropdown dropdown-append-to-body>
+        <a href="#" id="simple-dropdown" class="dropdown-toggle" title="Usuario" uib-dropdown-toggle><i class="fa fa-user"></i></a>
+        <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+          <li>
+            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+          </li>
+          <li>
+            <a href="/settings"><i class="fa fa-fw fa-gear"></i> Settings</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="" ng-click="logout()"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+          </li>
+          <li></li>
+        </ul>
+      </li>
+
+      <li class="dropdown" uib-dropdown dropdown-append-to-body>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Edificio" uib-dropdown-toggle><i class="fa fa-building"></i></a>
+        <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+<!--           <li>
+            <a href ng-click="removeBuilding()"><i class="fa fa-fw fa-angle-right"></i> Nuevo Edificio</a>
+          </li> -->
+          <li>
+            <a href ng-click="newBuilding()"><i class="fa fa-fw fa-angle-right"></i> Nuevo Inmueble</a>
+          </li>
+          <li>
+            <a href ng-click="removeBuilding()"><i class="fa fa-fw fa-angle-right"></i>Todos los Inmuebles</a>
+          </li>
+          <li class="divider"></li>
+          <li ng-repeat="building in buildings">
+            <a href ng-click="putBuilding(building._id)"><i class="fa fa-fw fa-angle-right"></i>{{building.name}}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <!-- navbar-right start -->
+
+  </nav>
+  <!-- nav end -->
+
+</header>
+<!--header end-->

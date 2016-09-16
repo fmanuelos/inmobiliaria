@@ -1,0 +1,73 @@
+<div class="modal-header">
+  <h4 class="modal-title">Crear un nueva factura</h4>
+</div>
+<div class="modal-body">
+  <form id="form-create" class="form-create" name="form" novalidate>
+    <div class="row">
+      <div class="form-group col-md-8">
+        <label for="customer">Cliente</label>
+        <ui-select ng-model="invoice.customer" ng-disabled="disabled" style="width: 450px;">
+        <ui-select-match placeholder="Select or search a cliente in the list...">{{$select.selected.name}}</ui-select-match>
+        <ui-select-choices repeat="customer in customers | filter: $select.search">
+        <span ng-bind-html="customer.name | highlight: $select.search"></span>
+        </ui-select-choices>
+        </ui-select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="currency">Moneda</label>
+        <select class="form-control" id="currency" name="currency" ng-model="invoice.currency">
+          <option value="" disabled selected hidden>Seleccionar...</option>
+          <option value="PESOS">Pesos (MXN)</option>
+          <option value="DOLARES">Dólares (USD)</option>
+        </select>
+      </div>
+      <table class="table table-striped table-align-top">
+        <thead>
+          <tr>
+            <th><label for="quantity">Cantidad</label></th>
+            <th><label for="concept">Concepto</label></th>
+            <th><label for="amount">Monto</label></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="mov in movements">
+            <td>{{ mov.quantity }}</td>
+            <td>{{ mov.concept }}</td>
+            <td>{{ mov.amount }}</td>
+            <td><a href="#" id="delete" title="Borrar"><i class="fa fa-times fa-lg"></i></a></td>
+          </tr>
+          <tr>
+            <td>
+              <input type="number" class="form-control" id="quantity" ng-model="movement.quantity">
+            </td>
+            <td>
+              <textarea class="form-control" id="concept" ng-model="movement.concept" rows="3" style="width: 450px;"></textarea>
+            </td>
+            <td>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="number" class="form-control" id="amount" ng-model="movement.amount">
+              </div>
+            </td>
+            <td><button class="btn btn-info" ng-click="newMovement()"><i class="fa fa-plus"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <dl class="dl-horizontal dl-invoice col-md-offset-8 col-md-4">
+        <dt>Sub Total</dt>
+        <dd class="subtotal">{{ invoice.amount | currency }}</dd>
+        <dt>IVA</dt>
+        <dd class="iva">{{ invoice.tax | currency }}</dd>
+        <dt>Total</dt>
+        <dd class="total">{{ invoice.total | currency }}</dd>
+      </dl>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-primary" type="submit" ng-click="create(invoice)" form="form-create">Crear</button>
+</div>

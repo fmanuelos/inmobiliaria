@@ -1,0 +1,21 @@
+<div class="container">
+  <form class="form-company" name="form" ng-submit="addCompany(form)" novalidate>
+    <h2 class="form-company-heading">registro de compania</h2>
+    <div class="login-wrap">
+        <p>Introduzca lel nombre de su empresa a continuación</p>
+
+        <input type="text" name="name" class="form-control" ng-model="company.name" placeholder="Company Name" autofocus="" required/>
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+          <p class="help-block" ng-show="form.name.$error.required && submitted">
+            A name is required
+          </p>
+        </div>
+        <hr>
+
+        <button class="btn btn-lg btn-info pull-right" type="submit">Siguiente</button>
+        <div class="clearfix"></div>
+
+    </div>
+  </form>
+</div>

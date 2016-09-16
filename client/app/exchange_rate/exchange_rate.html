@@ -1,0 +1,62 @@
+<div ng-include="'components/header/header.html'"></div>
+<div ng-include="'components/aside/aside.html'"></div>
+
+<!-- main start -->
+<section id="main" class="merge-left" ng-class="{'merge-left' : !$root.toggleAside}">
+  <section class="container-fluid" ng-class="{'container-fluid' : !$root.toggleAside, 'container' : $root.toggleAside}">
+
+    <!-- exchange_rate start -->
+    <h2>Tipo de Cambio</h2>
+    <hr>
+    <form id="form-filter" class="form-filter" name="form" novalidate>
+      <div class="row vertical-align">
+        <div class="form-group col-md-4">
+          <label for="start_date">Fecha Desde</label>
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            <input type="text" class="form-control" id="start_date" uib-datepicker-popup ng-model="exchange.startDate" placeholder="yyyy-mm-dd" is-open="start_open" ng-click="start_open=true"  show-button-bar="false" show-weeks="false" style="width: 300px;">
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="end_date">Fecha Hasta</label>
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            <input type="text" class="form-control" id="end_date" uib-datepicker-popup ng-model="exchange.endDate" placeholder="yyyy-mm-dd" is-open="end_open" ng-click="end_open=true"  show-button-bar="false" show-weeks="false" style="width: 300px;">
+          </div>
+        </div>
+        <div class="form-group col-md-4" style="vertical-align: bottom;">
+          <div class="">
+            <input type="submit" value="Ver Mas" ng-click="filter(exchange)" class="btn btn-primary">
+          </div>
+        </div>
+      </div>
+    </form>
+    <hr>
+    <div class="row">
+      <div class="col-md-6 table-responsive margin-bottom">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="exchangeRate in exchangeRates | orderBy:'-date'" ng-class="$index < 5 ? 'lead':''">
+              <td>{{ exchangeRate.date | date:'dd MMMM yyyy' }}</td>
+              <td>{{ exchangeRate.value | currency:"$":4 }}</td>
+            </tr>
+            <tr ng-show="!exchangeRates.length">
+              <td colspan="2" class="text-center">No Existe Tipos de Cambio</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- exchange_rate end -->
+
+  </section>
+</section>
+<!-- main end -->
+
+<div ng-include="'components/footer/footer.html'"></div>
