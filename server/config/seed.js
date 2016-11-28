@@ -81,19 +81,6 @@ User.find({}).remove().exec()
         return;
     });
   })
-  .then(function() {
-    return User.create({
-      provider: 'local',
-      name:     'fmiranda',
-      firstname:'Francisco Manuel',
-      lastname: 'Miranda Gomez',
-      email:    'fmiranda@akbalsc.com',
-      password: 'dsaewq321',
-      isActive: true
-    }, function (err, user) {
-        return user;
-    });
-  })
   .then(function (user) {
     return Company.find({}).remove().exec()
       .then(function () {
